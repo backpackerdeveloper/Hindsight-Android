@@ -1,0 +1,76 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    id 'com.chaquo.python' version '15.0.1'
+}
+
+android {
+    namespace 'com.shubhamtripz.hindsight'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.shubhamtripz.hindsight"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "arm64-v8a", "x86_64"
+        }
+
+        python {
+            buildPython "C:/Users/shubham/AppData/Local/Programs/Python/Python311/python.exe"
+            version "3.11"
+            pip {
+                install "python-keyczar"
+                install "keyring==22.1.0"       // Compatible version
+                install "keyrings.alt==4.0.2"   // Use an alternative keyring backend
+                install "pycryptodome"
+                install "pycryptodomex"
+                install "six>=1.15.0"
+                install "argparse==1.4.0"
+                install "bottle==0.12.23"
+                install "protobuf==4.23.0"
+                install "puremagic==1.11"
+                install "pytz==2021.3"
+                install "setuptools==65.5.1"
+                install "xlsxwriter==3.1.2"
+                install "urllib3==1.26.0"
+                // Temporarily comment out the git installation
+                install "git+https://github.com/cclgroupltd/ccl_chrome_indexeddb.git"
+            }
+
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.activity
+    implementation libs.androidx.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+
+}

@@ -1,0 +1,13 @@
+pip>=21.0
+setuptools>=65.5.1
+argparse~=1.4.0
+bottle>=0.12.18
+keyring>=21.2.1
+protobuf>=4.23
+puremagic~=1.11
+pycryptodome>=3.9.7
+pycryptodomex>=3.9.7
+pytz>=2021.3
+xlsxwriter>=3.1
+urllib3>=1.26.0
+ccl_chrome_indexeddb @ git+https://github.com/cclgroupltd/ccl_chrome_indexeddb.git
